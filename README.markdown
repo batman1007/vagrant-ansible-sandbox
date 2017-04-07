@@ -28,7 +28,7 @@ Packer build creates your box image file (server.box), for Vagrant to use as a V
 * Create a C:\Packer directory
 * Git clone this repo into C:\Packer (i.e. open GIT Bash session and change directory to C:\Packer first)
 * Place packer.exe into C:\Packer\vagrant-ansible-sandbox or ensure its in your Windows PATH.
-* Place CentOS 7 x86_64 Base ISO ( http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1611.iso ) in C:\Packer\vagrant-ansible-sandbox  
+* Place CentOS 7 x86_64 Base ISO ( http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-DVD-1611.iso ) in C:\Packer\vagrant-ansible-sandbox or edit centos7.json with the correct path to the ISO.  
 I'm using v1611 in my packer build, but feel free to change this to whichever version you want, remember to update centos7.json though.  
 **NOTE:** centos7.json will look in your base folder for the ISO
   
@@ -60,7 +60,7 @@ When you 'vagrant up' it will look for the id_rsa file and place it in your ~/.s
   
   
 ### Pre-requisites
-* Before running vagrant, open a GIT Bash session and set the following env variables to ensure proxy config gets picked up correctly during Vagrant, i.e.
+* Before running vagrant, open a GIT Bash session and set the following env variables. These are used to create your user and useful if need to authenticate through a proxy, see below.
 ```
   export username=myusername
   export password='mypassword'			# The single quotes here ARE important
