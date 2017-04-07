@@ -1,0 +1,36 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "iso_url": "file:///CentOS-7-x86_64-DVD-1611.iso",
+      "iso_checksum": "",
+      "iso_checksum_type": "none",
+      "ssh_username": "root",
+      "ssh_password": "vagrant",
+	  "http_directory": "kickstart",
+	  "disk_size": "12000",
+	  "headless": "true",
+      "ssh_wait_timeout": "3000s",	  
+	  "boot_wait": "10s",
+	  "boot_command": [ "<tab>", "linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg <enter>"	  ],
+	  "guest_additions_mode": "upload",
+      "shutdown_command": "poweroff"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [ 
+	    "scripts/post.sh"		
+	  ]
+    }
+	
+  ],
+
+  "post-processors": [{
+    "type": "vagrant",
+    "output": "server.box"
+  }]
+}

@@ -1,0 +1,7 @@
+*.iso
+*.box
+*.vdi
+packer_cache
+packer.exe
+.vagrant
+id_rsa
