@@ -9,7 +9,6 @@ chmod 700 /home/vagrant/.ssh
 chmod 600 /home/vagrant/.ssh/authorized_keys
 
 # VBoxGuestAdditions Setup
-cd /tmp
 mkdir /tmp/isomount
 mount -t iso9660 -o loop /root/VBoxGuestAdditions.iso /tmp/isomount
 
@@ -17,8 +16,9 @@ mount -t iso9660 -o loop /root/VBoxGuestAdditions.iso /tmp/isomount
 /tmp/isomount/VBoxLinuxAdditions.run
 
 # Cleanup
-umount isomount
-rm -rf isomount /root/VBoxGuestAdditions.iso
+sleep 5
+umount /tmp/isomount
+rm -rf /tmp/isomount /root/VBoxGuestAdditions.iso
 
 systemctl disable initial-setup-text
 
